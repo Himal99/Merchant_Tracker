@@ -43,6 +43,7 @@ public class RegisterServiceImpl implements RegisterService{
                 setParameter(2,longitude).setParameter(3,latitude)
                 .getResultList();
 
+        // Currently, it is calculating the distance in miles, replace the number '3959' with '6371' to get distance in KM.
 
         return objectList;
     }
