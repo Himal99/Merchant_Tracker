@@ -1,0 +1,99 @@
+<div th:replace="shared/header"></div>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
+<script src="js/payment.js"></script>
+<div class="container">
+
+   <div class="container">
+       <div class="box box-widget widget-user" id="topMerchant">
+           <!-- Add the bg color to the header using any of the bg-* classes -->
+           <div class="widget-user-header bg-black" style="background: url('../webjars/adminlte/2.3.11/dist/img/photo1.png') center center;">
+               <h3 class="widget-user-username"><b th:text="${data.merchant_name}"></b></h3>
+               <h5 class="widget-user-desc" th:text="${data.phone_number}"></h5>
+           </div>
+           <div class="widget-user-image">
+               <img class="img-circle" src="img/img.png" alt="User Avatar">
+           </div>
+
+           <div class="box-footer">
+               <div class="row">
+                   <div class="col-sm-4 border-right">
+                       <div class="description-block">
+                           <h5 class="description-header"><b th:text="${data.bank_name}"></b></h5>
+                           <span class="description-text">BANK NAME</span>
+                       </div>
+                       <!-- /.description-block -->
+                   </div>
+                   <!-- /.col -->
+                   <div class="col-sm-4 border-right">
+                       <div class="description-block">
+                           <h5 class="description-header"><b th:text="${data.brand_name}"></b></h5>
+                           <span class="description-text">BRAND</span>
+                       </div>
+                       <!-- /.description-block -->
+                   </div>
+                   <!-- /.col -->
+                   <div class="col-sm-4">
+                       <div class="description-block">
+                           <h5 class="description-header"><b th:text="${data.account_number}"></b></h5>
+                           <span class="description-text">A/C NO</span>
+                       </div>
+                       <!-- /.description-block -->
+                   </div>
+
+                   <!-- /.col -->
+               </div>
+
+               <!-- /.row -->
+           </div>
+       </div>
+   </div>
+    <div class="container ">
+
+       <div class="row">
+           <div class="col-md-4" th:each="data: ${datas}">
+               <!-- Widget: user widget style 1 -->
+               <div class="box box-widget widget-user">
+                   <!-- Add the bg color to the header using any of the bg-* classes -->
+                   <div class="widget-user-header bg-aqua-active">
+                       <h3 class="widget-user-username" th:text="${data.merchant_name}"></h3>
+                       <h5 class="widget-user-desc" th:text="${data.phone_number}"></h5>
+                   </div>
+                   <div class="widget-user-image">
+                       <img class="img-circle" src="img/demouser.jpg" alt="User Avatar">
+                   </div>
+                   <div class="box-footer">
+                       <div class="row">
+                           <div class="col-sm-4 border-right">
+                               <div class="description-block">
+                                  <span>Sanima Bank</span>
+                               </div>
+                               <!-- /.description-block -->
+                           </div>
+                           <!-- /.col -->
+                           <div class="col-sm-4 border-right">
+                               <div class="description-block">
+                                  <span th:text="${data.brand_name}"></span>
+                               </div>
+                               <!-- /.description-block -->
+                           </div>
+                           <!-- /.col -->
+                           <div class="col-sm-4">
+                               <div class="description-block">
+                                  <span th:text="${data.account_number}"></span>
+                               </div>
+                               <!-- /.description-block -->
+                           </div>
+                           <!-- /.col -->
+                       </div>
+                       <!-- /.row -->
+                   </div>
+               </div>
+               <!-- /.widget-user -->
+           </div>
+
+       </div>
+
+    </div>
+</div>
+<div th:replace="shared/footer"></div>
+
