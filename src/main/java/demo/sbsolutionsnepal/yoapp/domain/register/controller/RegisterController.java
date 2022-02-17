@@ -37,7 +37,7 @@ public class RegisterController extends BaseController {
 
     @GetMapping
     public String index(Model model){
-        return viewPath + INDEX;
+        return viewPath.concat(INDEX);
     }
 
     @PostMapping(SAVE)

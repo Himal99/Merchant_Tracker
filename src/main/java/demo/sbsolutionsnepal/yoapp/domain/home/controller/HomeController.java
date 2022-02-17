@@ -24,7 +24,7 @@ public class HomeController extends BaseController {
 
     @GetMapping()
     public String index() {
-        return viewPath + INDEX;
+        return viewPath.concat(INDEX);
     }
 
 }
