@@ -5,10 +5,11 @@ DECLARE
         BEGIN
             if(@count < 1)
             insert into register_category(category_name,status) values ('Food',0)
-            insert into register_category(category_name,status) values ('Apple',0)
-            insert into register_category(category_name,status) values ('Banana',0)
-            insert into register_category(category_name,status) values ('Mango',0)
-            insert into register_category(category_name,status) values ('Orange',0)
-            insert into register_category(category_name,status) values ('Potato',0)
+            insert into register_category(category_name,status) values ('Beverage',0)
+            insert into register_category(category_name,status) values ('Travel',0)
+            insert into register_category(category_name,status) values ('Stationery',0)
+            insert into register_category(category_name,status) values ('Rent',0)
+            insert into register_category(category_name,status) values ('Education',0)
+            insert into register_category(category_name,status) values ('Furnishing',0)
         END
 END;
