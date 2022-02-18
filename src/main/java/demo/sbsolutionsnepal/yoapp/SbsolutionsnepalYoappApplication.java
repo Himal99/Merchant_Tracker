@@ -4,6 +4,7 @@ import demo.sbsolutionsnepal.yoapp.domain.register.category.entity.RegisterCateg
 import demo.sbsolutionsnepal.yoapp.domain.register.category.repo.RegisterCategoryRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.event.EventListener;
@@ -28,6 +29,12 @@ public class SbsolutionsnepalYoappApplication extends SpringBootServletInitializ
         this.service = service;
     }
 
+    @Override
+    protected SpringApplicationBuilder configure(
+            SpringApplicationBuilder builder) {
+        return builder.sources(SbsolutionsnepalYoappApplication.class);
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(SbsolutionsnepalYoappApplication.class, args);
 
@@ -49,5 +56,7 @@ public class SbsolutionsnepalYoappApplication extends SpringBootServletInitializ
     public void loadSql() throws Exception {
 
     }
+
+
 
 }
