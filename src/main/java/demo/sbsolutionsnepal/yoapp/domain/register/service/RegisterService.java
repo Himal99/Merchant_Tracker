@@ -11,8 +11,10 @@ import java.util.List;
  * SB Solutions Pvt.Ltd
  */
 @Service
-public  interface RegisterService {
+public interface RegisterService {
     List<RegisteredMerchantDto> registeredMerchantDtos(Double latitude, Double longitude);
+
     List<Register> getAll();
+
     void save(Register register);
 }

@@ -1,6 +1,7 @@
 package demo.sbsolutionsnepal.yoapp.domain.register.controller;
 
 import demo.sbsolutionsnepal.yoapp.base.baseDomain.BaseController;
+import demo.sbsolutionsnepal.yoapp.domain.register.category.repo.RegisterCategoryRepository;
 import demo.sbsolutionsnepal.yoapp.domain.register.dto.RegisteredMerchantDto;
 import demo.sbsolutionsnepal.yoapp.domain.register.entity.Register;
 import demo.sbsolutionsnepal.yoapp.domain.register.service.RegisterServiceImpl;
@@ -24,37 +25,40 @@ import static demo.sbsolutionsnepal.yoapp.base.apiUrl.Url.*;
 @RequestMapping(REGISTER)
 public class RegisterController extends BaseController {
 
-    private Logger logger = LoggerFactory.getLogger(RegisterController.class);
+    private final Logger logger = LoggerFactory.getLogger(RegisterController.class);
 
     private final RegisterServiceImpl registerService;
     private final HttpSession httpSession;
+    private final RegisterCategoryRepository categoryRepository;
 
-    RegisterController(RegisterServiceImpl registerService, HttpSession httpSession){
+    RegisterController(RegisterServiceImpl registerService, HttpSession httpSession, RegisterCategoryRepository categoryRepository) {
         this.registerService = registerService;
         this.httpSession = httpSession;
-        viewPath="register";
+        this.categoryRepository = categoryRepository;
+        viewPath = "register";
     }
 
     @GetMapping
-    public String index(Model model){
+    public String index(Model model) {
+        model.addAttribute("category", categoryRepository.findAll());
         return viewPath.concat(INDEX);
     }
 
     @PostMapping(SAVE)
     @ResponseBody
-    public String save(@ModelAttribute  Register register, Model model){
+    public String save(@ModelAttribute Register register, Model model) {
         logger.info("register::{}", register);
-         registerService.save(register);
-         return "success";
+        registerService.save(register);
+        return "success";
     }
 
     @GetMapping(JSON)
     @ResponseBody
-    public List<RegisteredMerchantDto> getJson(){
+    public List<RegisteredMerchantDto> getJson() {
         Register registeredUser = (Register) httpSession.getAttribute("currentLocation");
-        if(!ObjectUtils.isEmpty(registeredUser))
-            return registerService.registeredMerchantDtos(registeredUser.getLatitude(),registeredUser.getLongitude());
+        if (!ObjectUtils.isEmpty(registeredUser))
+            return registerService.registeredMerchantDtos(registeredUser.getLatitude(), registeredUser.getLongitude());
 
-        return registerService.registeredMerchantDtos(0.0,0.0);
+        return registerService.registeredMerchantDtos(0.0, 0.0);
     }
 }
