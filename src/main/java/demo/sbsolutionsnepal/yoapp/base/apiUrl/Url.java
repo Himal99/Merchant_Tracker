@@ -18,4 +18,5 @@ public class Url {
     public static final String BASE="/";
     public static final String PAYMENT="/payment";
     public static final String GET_NEAREST_MERCHANT="/nearestMerchant";
+    public static final String MERCHANT_PROFILE="/merchantProfile";
 }

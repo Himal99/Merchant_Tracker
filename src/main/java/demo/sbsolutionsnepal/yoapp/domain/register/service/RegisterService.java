@@ -13,8 +13,7 @@ import java.util.List;
 @Service
 public interface RegisterService {
     List<RegisteredMerchantDto> registeredMerchantDtos(Double latitude, Double longitude);
-
     List<Register> getAll();
-
     void save(Register register);
+    Register getById(Long id);
 }
