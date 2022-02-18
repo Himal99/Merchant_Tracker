@@ -1,5 +1,6 @@
 package demo.sbsolutionsnepal.yoapp;
 
+import demo.sbsolutionsnepal.yoapp.domain.register.category.entity.RegisterCategory;
 import demo.sbsolutionsnepal.yoapp.domain.register.category.repo.RegisterCategoryRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +11,8 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.util.List;
+import java.util.Objects;
 
 @SpringBootApplication(scanBasePackages = "demo.sbsolutionsnepal.yoapp")
 public class SbsolutionsnepalYoappApplication {
@@ -34,7 +37,10 @@ public class SbsolutionsnepalYoappApplication {
         ResourceDatabasePopulator populator
                 = new ResourceDatabasePopulator(false,
                 false, "UTF-8", new ClassPathResource("dbSql/category.sql"));
-        populator.execute(dataSource);
+        List<RegisterCategory> categoryList = service.findAll();
+        if(categoryList.isEmpty()) {
+            populator.execute(dataSource);
+        }
     }
 
     @PostConstruct
