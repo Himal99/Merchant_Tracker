@@ -14,6 +14,8 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.List;
 
+import static demo.sbsolutionsnepal.yoapp.base.dbPath.DbPath.REGISTER_CATEGORY;
+
 @SpringBootApplication(scanBasePackages = "demo.sbsolutionsnepal.yoapp")
 public class SbsolutionsnepalYoappApplication extends SpringBootServletInitializer {
 
@@ -36,7 +38,7 @@ public class SbsolutionsnepalYoappApplication extends SpringBootServletInitializ
     public void initialize() {
         ResourceDatabasePopulator populator
                 = new ResourceDatabasePopulator(false,
-                false, "UTF-8", new ClassPathResource("dbSql/category.sql"));
+                false, "UTF-8", new ClassPathResource(REGISTER_CATEGORY));
         List<RegisterCategory> categoryList = service.findAll();
         if (categoryList.isEmpty()) {
             populator.execute(dataSource);
