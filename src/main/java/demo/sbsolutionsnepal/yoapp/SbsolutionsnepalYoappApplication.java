@@ -2,6 +2,8 @@ package demo.sbsolutionsnepal.yoapp;
 
 import demo.sbsolutionsnepal.yoapp.domain.register.category.entity.RegisterCategory;
 import demo.sbsolutionsnepal.yoapp.domain.register.category.repo.RegisterCategoryRepository;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -17,17 +19,14 @@ import java.util.List;
 
 import static demo.sbsolutionsnepal.yoapp.base.dbPath.DbPath.REGISTER_CATEGORY;
 
+@NoArgsConstructor
 @SpringBootApplication(scanBasePackages = "demo.sbsolutionsnepal.yoapp")
 public class SbsolutionsnepalYoappApplication extends SpringBootServletInitializer {
 
-    private final DataSource dataSource;
-    private final RegisterCategoryRepository service;
-
-    public SbsolutionsnepalYoappApplication(DataSource dataSource,
-                                            RegisterCategoryRepository service) {
-        this.dataSource = dataSource;
-        this.service = service;
-    }
+    @Autowired
+    private  DataSource dataSource;
+    @Autowired
+    private  RegisterCategoryRepository service;
 
     @Override
     protected SpringApplicationBuilder configure(
