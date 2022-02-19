@@ -4,6 +4,10 @@ import demo.sbsolutionsnepal.yoapp.base.SiteController;
 import demo.sbsolutionsnepal.yoapp.domain.register.dto.RegisteredMerchantDto;
 import demo.sbsolutionsnepal.yoapp.domain.register.entity.Register;
 import demo.sbsolutionsnepal.yoapp.domain.register.service.RegisterServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -25,6 +30,7 @@ import static demo.sbsolutionsnepal.yoapp.base.apiUrl.Url.PAYMENT;
  * SB Solutions Pvt.Ltd
  */
 @Controller
+@Api(tags = "Payment")
 @RequestMapping(PAYMENT)
 public class PaymentController extends SiteController {
 
@@ -38,6 +44,13 @@ public class PaymentController extends SiteController {
         viewPath = "payment";
     }
 
+
+    @ApiOperation(value = "Get Nearest Available Merchant", tags = "Merchant Profile")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Invalid"),
+            @ApiResponse(code = 500, message = "Internal Server Error", response = HttpServerErrorException.InternalServerError.class)
+    })
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView index(@RequestParam(value = "latitude", required = false, defaultValue = "0") double lalitude,
                               @RequestParam(value = "longitude", required = false, defaultValue = "0") double longitude) {

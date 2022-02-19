@@ -8,6 +8,11 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class Url {
+
+    public static final String BASE_PACKAGE="demo.sbsolutionsnepal.yoapp";
+    public static final String COMPANY_URL="sbsolutionsnepal.com";
+
+    //    Rest APIs
     public static final String REGISTER="/register";
     public static final String SAVE="/save";
     public static final String JSON="/json";

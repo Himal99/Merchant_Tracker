@@ -24,9 +24,9 @@ import static demo.sbsolutionsnepal.yoapp.base.dbPath.DbPath.REGISTER_CATEGORY;
 public class SbsolutionsnepalYoappApplication extends SpringBootServletInitializer {
 
     @Autowired
-    private  DataSource dataSource;
+    private DataSource dataSource;
     @Autowired
-    private  RegisterCategoryRepository service;
+    private RegisterCategoryRepository service;
 
     @Override
     protected SpringApplicationBuilder configure(
@@ -55,7 +55,6 @@ public class SbsolutionsnepalYoappApplication extends SpringBootServletInitializ
     public void loadSql() throws Exception {
 
     }
-
 
 
 }
